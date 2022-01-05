@@ -1,0 +1,3 @@
+include ':replacemethod'
+include ':app'
+rootProject.name = "ReplaceMethod"
