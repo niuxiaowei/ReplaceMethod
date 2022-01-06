@@ -4,7 +4,7 @@ plugins {
     id 'kotlin-android-extensions'
 }
 
-//apply plugin: 'ReplaceMethodPlugin'
+apply plugin: 'ReplaceMethodPlugin'
 
 
 android {
@@ -53,133 +53,133 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
-//
-//replaceMethod{
-//    open true
-//    openLog false
-//    logFilters "IInterfaceTest"
-//    replaceByMethods{
-//        register {
-//            replace {
-//                invokeType "ins"
-//                className "android.view.LayoutInflater"
-//                methodName "inflate"
-//                desc "(int,android.view.ViewGroup)android.view.View"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflate"
-//                addExtraParams = true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "ins"
-//                className "com.mi.replacemethod.MainActivity"
-//                methodName "inflate"
-//                desc "(int,android.view.ViewGroup)android.view.View"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflate"
-//                addExtraParams = true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "static"
-//                className "android.view.View"
-//                methodName "inflate"
-//                desc "(android.content.Context,int,android.view.ViewGroup)android.view.View"
-//                ignoreOverideStaticMethod true
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflate"
-//                addExtraParams  true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "static"
-//                className "com.mi.replacemethod.MyInflater"
-//                methodName "inflate"
-//                desc "(android.content.Context,int,android.view.ViewGroup)android.view.View"
-//                ignoreOverideStaticMethod true
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflateMyInflater"
-//                addExtraParams  true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "ins"
-//                className "android.view.LayoutInflater"
-//                methodName "inflate"
-//                desc "(int,android.view.ViewGroup,boolean)android.view.View"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflate"
-//                addExtraParams =  true
-//            }
-//        }
-//        register {
-//            replace {
-//                replacePackages "com.mi","com.niu"
-//                invokeType "ins"
-//                className "android.app.Activity"
-//                methodName "setContentView"
-//                desc "(int)"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "setContentView"
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "ins"
-//                className "android.view.View"
-//                methodName "setOnClickListener"
-//                desc "(android.view.View\$OnClickListener)"
-//                }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "setOnClickListener"
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "new"
-//                className "com.mi.replacemethod.MyTextView"
-//                desc "(android.content.Context)"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "newMyTextView"
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                releaseEnable true
-//                invokeType "static"
-//                className "android.util.Log"
-//                methodName "i"
-//                desc "(java.lang.String,java.lang.String)int"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//            }
-//        }
-//    }
-//}
+
+replaceMethod{
+    open true
+    openLog false
+    logFilters "IInterfaceTest"
+    replaceByMethods{
+        register {
+            replace {
+                invokeType "ins"
+                className "android.view.LayoutInflater"
+                methodName "inflate"
+                desc "(int,android.view.ViewGroup)android.view.View"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflate"
+                addExtraParams = true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "ins"
+                className "com.mi.replacemethod.MainActivity"
+                methodName "inflate"
+                desc "(int,android.view.ViewGroup)android.view.View"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflate"
+                addExtraParams = true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "static"
+                className "android.view.View"
+                methodName "inflate"
+                desc "(android.content.Context,int,android.view.ViewGroup)android.view.View"
+                ignoreOverideStaticMethod true
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflate"
+                addExtraParams  true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "static"
+                className "com.mi.replacemethod.MyInflater"
+                methodName "inflate"
+                desc "(android.content.Context,int,android.view.ViewGroup)android.view.View"
+                ignoreOverideStaticMethod true
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflateMyInflater"
+                addExtraParams  true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "ins"
+                className "android.view.LayoutInflater"
+                methodName "inflate"
+                desc "(int,android.view.ViewGroup,boolean)android.view.View"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflate"
+                addExtraParams =  true
+            }
+        }
+        register {
+            replace {
+                replacePackages "com.mi","com.niu"
+                invokeType "ins"
+                className "android.app.Activity"
+                methodName "setContentView"
+                desc "(int)"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "setContentView"
+            }
+        }
+
+        register {
+            replace {
+                invokeType "ins"
+                className "android.view.View"
+                methodName "setOnClickListener"
+                desc "(android.view.View\$OnClickListener)"
+                }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "setOnClickListener"
+            }
+        }
+
+        register {
+            replace {
+                invokeType "new"
+                className "com.mi.replacemethod.MyTextView"
+                desc "(android.content.Context)"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "newMyTextView"
+            }
+        }
+
+        register {
+            replace {
+                releaseEnable true
+                invokeType "static"
+                className "android.util.Log"
+                methodName "i"
+                desc "(java.lang.String,java.lang.String)int"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+            }
+        }
+    }
+}
