@@ -1,3 +1,6 @@
+
+
+
 # ReplaceMethod(对调用的方法进行替换的工具)
 
 ### 用它能做什么
@@ -231,3 +234,7 @@ public class MyView extends View{
 
 }
 ```
+
+**我的公众号**
+![我的微信公众号](https://user-images.githubusercontent.com/3078303/148639094-a57cf897-eec6-4d79-a724-42b36e742b96.jpg)
+
