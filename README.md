@@ -112,21 +112,23 @@
 2. 对于new对象的方法，直接替换为目标类的静态方法（目标类指yyy，静态方法的参数与构造函数参数一致，返回值为new对象对应的类），替换后的效果:  new MyClass( int ,int ) ------->  yyy.createMyClass( int, int)
 3. 对于调用的是父类的静态/非静态方法，利用ASM在当前类中插入 私有静态方法（见 **2 定位替换方法**），替换后效果：xxx.invokeAMethod -----> 当前类.generateStaticMethod ------> yyy.invokeAMethod
 
-### 接入
+### 接入（参考代码中的例子）
 
 **1.工程的gradle文件**
 
 ```
 buildscript {
     repositories {
-        maven {
-            url "https://pkgs.d.xiaomi.net:443/artifactory/maven-release-virtual/"
-        }
+                maven { url 'https://jitpack.io' }
        
     }
     dependencies {
-      
-        classpath "com.mi.tools:replacemetohd:1.0.3"
+        classpath "com.github.niuxiaowei:ReplaceMethod:1.0.0"
+    }
+}
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
     }
 }
 ```
