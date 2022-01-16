@@ -103,7 +103,7 @@ class ReplaceMethodTransform extends Transform {
                 if (config.isNeedTraceClass(name)) {
                     ClassReader classReader = new ClassReader(file.bytes)
                     ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
-                    ClassVisitor cv = new ReplaceClassVisitor(Opcodes.ASM5, classWriter, config)
+                    ClassVisitor cv = new ReplaceClassVisitor(Opcodes.ASM6, classWriter, config)
                     classReader.accept(cv, EXPAND_FRAMES)
                     byte[] code = classWriter.toByteArray()
                     FileOutputStream fos = new FileOutputStream(
@@ -154,7 +154,7 @@ class ReplaceMethodTransform extends Transform {
                     jarOutputStream.putNextEntry(zipEntry)
                     ClassReader classReader = new ClassReader(IOUtils.toByteArray(inputStream))
                     ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
-                    ClassVisitor cv = new ReplaceClassVisitor(Opcodes.ASM5, classWriter, config)
+                    ClassVisitor cv = new ReplaceClassVisitor(Opcodes.ASM6, classWriter, config)
                     classReader.accept(cv, EXPAND_FRAMES)
                     byte[] code = classWriter.toByteArray()
                     jarOutputStream.write(code)
