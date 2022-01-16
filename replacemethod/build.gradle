@@ -10,7 +10,7 @@ group='com.github.niuxiaowei'
 dependencies {
     implementation gradleApi() //gradle sdk
     implementation localGroovy() //groovy sdk
-    implementation 'com.android.tools.build:gradle:3.4.0'
+    implementation 'com.android.tools.build:gradle:4.0.1'
 }
 
 
