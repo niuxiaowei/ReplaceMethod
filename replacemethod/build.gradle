@@ -11,12 +11,12 @@ dependencies {
     implementation gradleApi() //gradle sdk
     implementation localGroovy() //groovy sdk
     implementation 'com.android.tools.build:gradle:4.0.1'
-    //noinspection GradleDependency
-    implementation "org.ow2.asm:asm:6.0"
-    //noinspection GradleDependency
-    implementation "org.ow2.asm:asm-util:6.0"
-    //noinspection GradleDependency
-    implementation "org.ow2.asm:asm-commons:6.0"
+//    //noinspection GradleDependency
+//    implementation "org.ow2.asm:asm:6.0"
+//    //noinspection GradleDependency
+//    implementation "org.ow2.asm:asm-util:6.0"
+//    //noinspection GradleDependency
+//    implementation "org.ow2.asm:asm-commons:6.0"
 }
 
 
