@@ -73,7 +73,7 @@ class ReplaceMethodTransform extends Transform {
 
     @Override
     String getName() {
-        return "traceManTransform"
+        return "ReplaceMethod"
     }
 
     @Override

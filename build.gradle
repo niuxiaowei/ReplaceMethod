@@ -3,7 +3,11 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
+        maven { url 'https://jitpack.io'
+            metadataSources {
+                artifact() //Look directly for artifact
+            }
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.3"
