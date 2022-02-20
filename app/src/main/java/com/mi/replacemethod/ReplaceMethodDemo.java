@@ -1,12 +1,15 @@
 package com.mi.replacemethod;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * create by niuxiaowei
@@ -16,33 +19,42 @@ public class ReplaceMethodDemo {
 
     private static final String TAG = "ReplaceMethodDemo";
 
-    public static View inflate(LayoutInflater inflater, int layoutId, ViewGroup parent, Object[] objects) {
+    public static View inflate(LayoutInflater inflater, int layoutId, ViewGroup parent,
+            Object[] objects) {
         View result = inflater.inflate(layoutId, parent);
-        Log.i(TAG, "inflate invoke layoutId:" + layoutId + "  parent:" + parent + "  result:" + result);
+        Log.i(TAG,
+                "inflate invoke layoutId:" + layoutId + "  parent:" + parent + "  result:" + result);
         return result;
     }
 
-    public static View inflate(MainActivity mainActivity, int layoutId, ViewGroup parent, Object[] objects) {
+    public static View inflate(MainActivity mainActivity, int layoutId, ViewGroup parent,
+            Object[] objects) {
         View result = mainActivity.inflate(layoutId, parent);
-        Log.i(TAG, "inflate invoke layoutId:" + layoutId + "  parent:" + parent + "  result:" + result);
+        Log.i(TAG,
+                "inflate invoke layoutId:" + layoutId + "  parent:" + parent + "  result:" + result);
         return result;
     }
 
-    public static View inflate(LayoutInflater inflater, int layoutId, ViewGroup parent, boolean attachToRoot, Object[] objects) {
+    public static View inflate(LayoutInflater inflater, int layoutId, ViewGroup parent,
+            boolean attachToRoot, Object[] objects) {
         View result = inflater.inflate(layoutId, parent, attachToRoot);
-        Log.i(TAG, "inflate invoke layoutId:" + layoutId + "  parent:" + parent + "  attachToRoot:" + attachToRoot + "  result:" + result);
+        Log.i(TAG, "inflate invoke layoutId:" + layoutId + "  parent:" + parent + "  attachToRoot" +
+                ":" + attachToRoot + "  result:" + result);
         return result;
     }
 
     public static View inflate(Context context, int layoutId, ViewGroup parent, Object[] objects) {
         View view = View.inflate(context, layoutId, parent);
-        Log.i(TAG, "inflate invoke context:" + context + "layoutId:" + layoutId + "  parent:" + parent + "  result:" + view);
+        Log.i(TAG,
+                "inflate invoke context:" + context + "layoutId:" + layoutId + "  parent:" + parent + "  result:" + view);
         return view;
     }
 
-    public static View inflateMyInflater(Context context, int layoutId, ViewGroup parent, Object[] objects) {
+    public static View inflateMyInflater(Context context, int layoutId, ViewGroup parent,
+            Object[] objects) {
         View view = MyInflater.inflate(context, layoutId, parent);
-        Log.i("ReplaceMethodDemo", "inflate invoke context:" + context + "layoutId:" + layoutId + "  parent:" + parent + "  result:" + view);
+        Log.i("ReplaceMethodDemo",
+                "inflate invoke context:" + context + "layoutId:" + layoutId + "  parent:" + parent + "  result:" + view);
         return view;
     }
 
@@ -65,7 +77,7 @@ public class ReplaceMethodDemo {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(App.getInstance(),"点击事件被拦截了",Toast.LENGTH_LONG).show();
+            Toast.makeText(App.getInstance(), "点击事件被拦截了", Toast.LENGTH_LONG).show();
             if (listener != null) {
                 listener.onClick(v);
             }
@@ -81,7 +93,13 @@ public class ReplaceMethodDemo {
     }
 
     public static int i(String tag, String msg) {
-        System.out.println(TAG+"    tag is:"+tag+"  msg is:"+msg);
+        System.out.println(TAG + "    tag is:" + tag + "  msg is:" + msg);
         return 0;
+    }
+
+    public static List<ActivityManager.RunningTaskInfo> getRunningTasks(ActivityManager activityManager, int max) {
+        Log.i("ReplaceMethodDemo", "getRunningTasks max:" + max);
+        return activityManager.getRunningTasks(max);
+
     }
 }

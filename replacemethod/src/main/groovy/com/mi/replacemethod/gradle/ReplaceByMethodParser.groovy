@@ -104,6 +104,26 @@ class ReplaceByMethodParser {
         }
     }
 
+
+    private String deleteGenericsClass(String oriDesc) {
+        int startIndex = oriDesc.indexOf("<");
+        int endIndex = oriDesc.indexOf(">");
+        return oriDesc.substring(0, startIndex) + oriDesc.substring(endIndex + 1);
+    }
+
+    /**
+     * 从oriDesc把泛型的class信息删除掉，因为泛型在class中的信息都会被擦除，因此若在desc中
+     * 配置了泛型的class信息则直接删除,比如:java.util.List<com.test.Demo> --> java.util.List
+     * @param oriDesc
+     * @return
+     */
+    private String tryDeleteGenericsClass(String oriDesc) {
+        while (oriDesc.contains("<") && oriDesc.contains(">")) {
+            oriDesc = deleteGenericsClass(oriDesc);
+        }
+        return oriDesc;
+    }
+
     /**
      * 把java源码的方法描述符转化为字节码的方法秒速符
      * @param desc
@@ -112,6 +132,9 @@ class ReplaceByMethodParser {
      */
     private String convertJavaDesc2ClassDesc(String desc, String byOrReplace) {
         if (desc != null && desc.replaceAll("\\s*", "") != "") {
+
+            desc = tryDeleteGenericsClass(desc)
+
             int leftBracketIndex = desc.indexOf("(")
             int rightBracketIndex = desc.indexOf(")")
             if (leftBracketIndex < 0 || rightBracketIndex < 0 || rightBracketIndex < leftBracketIndex) {
@@ -131,6 +154,7 @@ class ReplaceByMethodParser {
                 if (baseTypeClassValue != null) {
                     result += baseTypeClassValue
                 } else if (param.endsWith("[]") && isValidJavaFullClassName(param.substring(0, param.indexOf("[")))) {
+                    //param是数组
                     result += "[L" + param.replace(".", "/") + ";"
                 } else if (isValidJavaFullClassName(param)) {
                     result += "L" + param.replace(".", "/") + ";"
