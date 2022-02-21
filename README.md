@@ -175,6 +175,37 @@ replaceMethod{
 }
 ```
 
+**3.泛型的配置**
+比如配置List，如下面的配置方法都可以
+```
+register {
+            replace {
+                invokeType "ins"
+                className "android.app.ActivityManager"
+                methodName "getRunningTasks"
+                desc "(int)java.util.List"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+            }
+}
+```
+or
+```
+register {
+            replace {
+                invokeType "ins"
+                className "android.app.ActivityManager"
+                methodName "getRunningTasks"
+                desc "(int)java.util.List<android.app.ActivityManager\$RunningTaskInfo>"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+            }
+}
+```
+
+
 在**replaceMethod**中进行配置，可以参考代码中的例子。
 
 **配置项介绍**
