@@ -187,7 +187,7 @@ replaceMethod{
                 invokeType "ins"
                 className "android.app.ActivityManager"
                 methodName "getRunningTasks"
-                desc "(int)java.util.List"
+                desc "(int)java.util.List<android.app.ActivityManager\$RunningTaskInfo>"
             }
             by {
                 className = "com.mi.replacemethod.ReplaceMethodDemo"
