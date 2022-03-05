@@ -3,6 +3,8 @@ package com.mi.replacemethod;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,6 +102,11 @@ public class ReplaceMethodDemo {
     public static List<ActivityManager.RunningTaskInfo> getRunningTasks(ActivityManager activityManager, int max) {
         Log.i("ReplaceMethodDemo", "getRunningTasks max:" + max);
         return activityManager.getRunningTasks(max);
+
+    }
+
+    public static void requestLocationUpdates(LocationManager locationManager, String s, long l,
+            float f, LocationListener locationListener,Object[] params) {
 
     }
 }

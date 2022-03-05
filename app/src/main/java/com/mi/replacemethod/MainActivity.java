@@ -2,12 +2,17 @@ package com.mi.replacemethod;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 public class MainActivity extends Activity {
@@ -20,9 +25,14 @@ public class MainActivity extends Activity {
         View view = inflate(R.layout.activity_second, null);
         Log.i("Main", "oncreate");
         getRunningTasks();
-//        Log.i("Main", "trydelete result:" + tryDeleteGenericsClass("(java.util.List<com.u.O>,int,java.util.List<com.u.O>)" +
-//                "java.util.List<com.niu" +
-//                ".Test>"));
+
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates("gps", 1000l, 2.0f, new LocationListener() {
+            @Override
+            public void onLocationChanged(@NonNull Location location) {
+
+            }
+        });
     }
 
     View inflate(int id, ViewGroup parentView) {
