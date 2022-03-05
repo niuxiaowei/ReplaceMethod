@@ -66,7 +66,7 @@ class ReplaceClassVisitor(api: Int, cv: ClassVisitor?, var config: Config) :
             }
             var isAbsMethod = access and Opcodes.ACC_ABSTRACT > 0
 
-            return if ( isAbsMethod) {
+            return if (isAbsMethod) {
                 super.visitMethod(access, name, desc, signature, exceptions)
             } else {
                 if (visitedMethodRecords == null) {
@@ -265,10 +265,16 @@ class ReplaceClassVisitor(api: Int, cv: ClassVisitor?, var config: Config) :
         params?.forEach {
             when (it) {
                 "I" -> mv.visitVarInsn(ILOAD, index++)
-                "J" -> mv.visitVarInsn(LLOAD, index+2)
+                "J" -> {
+                    mv.visitVarInsn(LLOAD, index)
+                    index += 2
+                }
                 "Z" -> mv.visitVarInsn(ILOAD, index++)
                 "F" -> mv.visitVarInsn(FLOAD, index++)
-                "D" -> mv.visitVarInsn(DLOAD, index+2)
+                "D" -> {
+                    mv.visitVarInsn(DLOAD, index)
+                    index += 2
+                }
                 "C" -> mv.visitVarInsn(ILOAD, index++)
                 "S" -> mv.visitVarInsn(ILOAD, index++)
                 else -> {
@@ -303,7 +309,11 @@ class ReplaceClassVisitor(api: Int, cv: ClassVisitor?, var config: Config) :
         var index = 0
         params?.forEach {
             mv.visitLocalVariable("param${index}", it, null, label0, label4, index)
-            index++
+            if (it == 'J' || it == "D") {
+                index += 2
+            } else {
+                index++
+            }
         }
 
     }

@@ -26,13 +26,13 @@ public class MainActivity extends Activity {
         Log.i("Main", "oncreate");
         getRunningTasks();
 
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates("gps", 1000l, 2.0f, new LocationListener() {
-            @Override
-            public void onLocationChanged(@NonNull Location location) {
-
-            }
-        });
+//        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//        locationManager.requestLocationUpdates("gps", 1000l, 2.0f, new LocationListener() {
+//            @Override
+//            public void onLocationChanged(@NonNull Location location) {
+//
+//            }
+//        });
     }
 
     View inflate(int id, ViewGroup parentView) {

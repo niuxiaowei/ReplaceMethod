@@ -45,6 +45,7 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
 
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
@@ -193,6 +194,31 @@ replaceMethod{
                 className = "com.mi.replacemethod.ReplaceMethodDemo"
             }
         }
+
+//        register {
+//            replace {
+//                releaseEnable true
+//                invokeType "static"
+//                className "android.util.Log"
+//                methodName "i"
+//                desc "(java.lang.String,java.lang.String)int"
+//            }
+//            by {
+//                className = "com.mi.replacemethod.ReplaceMethodDemo"
+//            }
+//        }
+//
+//        register {
+//            replace {
+//                invokeType "ins"
+//                className "android.app.ActivityManager"
+//                methodName "getRunningTasks"
+//                desc "(int)java.util.List<android.app.ActivityManager\$RunningTaskInfo>"
+//            }
+//            by {
+//                className = "com.mi.replacemethod.ReplaceMethodDemo"
+//            }
+//        }
 
         register {
             replace {
