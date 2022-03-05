@@ -261,13 +261,14 @@ class ReplaceClassVisitor(api: Int, cv: ClassVisitor?, var config: Config) :
      */
     private fun insertAloadInsn(params: MutableList<String>?, mv: MethodVisitor, firstParamAddCastInsn: Boolean = false, castClass: String? = "") {
         var index = 0
+        //J==long D == double 它们的wide是2，因此需要+2
         params?.forEach {
             when (it) {
                 "I" -> mv.visitVarInsn(ILOAD, index++)
-                "J" -> mv.visitVarInsn(LLOAD, index++)
+                "J" -> mv.visitVarInsn(LLOAD, index+2)
                 "Z" -> mv.visitVarInsn(ILOAD, index++)
                 "F" -> mv.visitVarInsn(FLOAD, index++)
-                "D" -> mv.visitVarInsn(DLOAD, index++)
+                "D" -> mv.visitVarInsn(DLOAD, index+2)
                 "C" -> mv.visitVarInsn(ILOAD, index++)
                 "S" -> mv.visitVarInsn(ILOAD, index++)
                 else -> {
