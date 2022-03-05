@@ -194,19 +194,19 @@ replaceMethod{
             }
         }
 
-        register {
-            replace {
-                releaseEnable true
-                invokeType "ins"
-                className "android.location.LocationManager"
-                methodName "requestLocationUpdates"
-                desc "(java.lang.String,long,float,android.location.LocationListener)"
-            }
-            by {
-                className = "com.mi.replacemethod.ReplaceMethodDemo"
-                addExtraParams = true
-            }
-        }
+//        register {
+//            replace {
+//                releaseEnable true
+//                invokeType "ins"
+//                className "android.location.LocationManager"
+//                methodName "requestLocationUpdates"
+//                desc "(java.lang.String,long,float,android.location.LocationListener)"
+//            }
+//            by {
+//                className = "com.mi.replacemethod.ReplaceMethodDemo"
+//                addExtraParams = true
+//            }
+//        }
 
     }
 }

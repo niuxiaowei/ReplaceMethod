@@ -265,10 +265,16 @@ class ReplaceClassVisitor(api: Int, cv: ClassVisitor?, var config: Config) :
         params?.forEach {
             when (it) {
                 "I" -> mv.visitVarInsn(ILOAD, index++)
-                "J" -> mv.visitVarInsn(LLOAD, index+2)
+                "J" -> {
+                    mv.visitVarInsn(LLOAD, index)
+                    index += 2
+                }
                 "Z" -> mv.visitVarInsn(ILOAD, index++)
                 "F" -> mv.visitVarInsn(FLOAD, index++)
-                "D" -> mv.visitVarInsn(DLOAD, index+2)
+                "D" -> {
+                    mv.visitVarInsn(DLOAD, index)
+                    index += 2
+                }
                 "C" -> mv.visitVarInsn(ILOAD, index++)
                 "S" -> mv.visitVarInsn(ILOAD, index++)
                 else -> {
