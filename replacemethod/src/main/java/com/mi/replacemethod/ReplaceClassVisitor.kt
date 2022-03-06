@@ -309,11 +309,12 @@ class ReplaceClassVisitor(api: Int, cv: ClassVisitor?, var config: Config) :
         var index = 0
         params?.forEach {
             mv.visitLocalVariable("param${index}", it, null, label0, label4, index)
-            if (it == 'J' || it == "D") {
-                index += 2
-            } else {
-                index++
+            when(it){
+                "J"-> index += 2
+                "D"-> index += 2
+                else -> index++
             }
+
         }
 
     }
