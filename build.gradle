@@ -16,7 +16,7 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
 //        classpath "com.mi.tools:replacemetohd:1.0.3"
-        classpath "com.github.niuxiaowei:ReplaceMethod:baee9ebe1c"
+        classpath "com.github.niuxiaowei:ReplaceMethod:1.0.2"
         //自动化maven打包插件
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
     }
