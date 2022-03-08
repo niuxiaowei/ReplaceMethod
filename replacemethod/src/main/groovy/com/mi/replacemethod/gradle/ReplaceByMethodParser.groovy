@@ -24,6 +24,7 @@ class ReplaceByMethodParser {
         JAVA_CLASS_BASE_TYPE_TABLE.put("char", "C")
         JAVA_CLASS_BASE_TYPE_TABLE.put("short", "S")
         JAVA_CLASS_BASE_TYPE_TABLE.put("void", "V")
+        JAVA_CLASS_BASE_TYPE_TABLE.put("byte", "B")
 
         //数组
         JAVA_CLASS_BASE_TYPE_TABLE.put("int[]", "[I")
@@ -33,6 +34,8 @@ class ReplaceByMethodParser {
         JAVA_CLASS_BASE_TYPE_TABLE.put("double[]", "[D")
         JAVA_CLASS_BASE_TYPE_TABLE.put("char[]", "[C")
         JAVA_CLASS_BASE_TYPE_TABLE.put("short[]", "[S")
+        JAVA_CLASS_BASE_TYPE_TABLE.put("byte[]", "[B")
+
     }
 
     /**

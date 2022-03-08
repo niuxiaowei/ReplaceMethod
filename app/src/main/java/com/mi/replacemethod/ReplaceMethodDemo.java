@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.net.NetworkInterface;
 import java.util.List;
 
 /**
@@ -109,4 +110,17 @@ public class ReplaceMethodDemo {
             float f, LocationListener locationListener,Object[] params) {
 
     }
+
+    public static byte[] getHardwareAddress(NetworkInterface info, Object[] params) {
+
+        Log.e(TAG, String.format("getHardwareAddress CTA false: %s#%s {%s} atLine=%s", params[0], params[1], params[2], params[3]));
+
+        return "".getBytes();
+    }
+
+    public static void testBaseType(byte b, byte[] bs, short s, short[] ss, long l, long[] ls, boolean bo, boolean[] bss, float f, float[] floats, int i, int[] ints, double d, double[] doubles) {
+        Log.i("ReplaceMethodDemo", "testByte b"+b+" bytes:"+bs + "s:"+s);
+
+    }
+
 }

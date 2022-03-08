@@ -57,8 +57,8 @@ dependencies {
 
 replaceMethod{
     open true
-    openLog false
-    logFilters "IInterfaceTest"
+    openLog true
+    logFilters "NetworkInterface"
     replaceByMethods{
         register {
             replace {
@@ -231,6 +231,32 @@ replaceMethod{
             by {
                 className = "com.mi.replacemethod.ReplaceMethodDemo"
                 addExtraParams = true
+            }
+        }
+
+        register {
+            replace {
+                releaseEnable true
+                invokeType "ins"
+                className "java.net.NetworkInterface"
+                methodName "getHardwareAddress"
+                desc "()byte[]"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                addExtraParams = true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "static"
+                className "com.mi.replacemethod.MainActivity"
+                methodName "testBaseType"
+                desc "(byte,byte[],short,short[],long,long[],boolean,boolean[],float,float[],int,int[],double,double[])"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
             }
         }
 

@@ -1,9 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
+//        maven{
+//            url '/home/niuxiaowie/mi/work/workspace/ReplaceMethodGithub/ReplaceMethod/localmaven'
+//        }
         google()
         jcenter()
-        maven { url 'https://jitpack.io'
+        maven {
+            url 'https://jitpack.io'
             metadataSources {
                 artifact() //Look directly for artifact
             }
@@ -24,6 +28,7 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenLocal()
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
@@ -33,3 +38,5 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+println("root:${rootProject.projectDir}")

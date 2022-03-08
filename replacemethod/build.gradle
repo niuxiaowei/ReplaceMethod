@@ -3,6 +3,7 @@ apply plugin: 'kotlin'
 //apply plugin: 'com.fernandocejas.frodo'
 //apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'kotlin-android-extensions'
+//若使用上传本地maven把下面的注释掉
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.niuxiaowei'
 
@@ -10,15 +11,8 @@ group='com.github.niuxiaowei'
 dependencies {
     implementation gradleApi() //gradle sdk
     implementation localGroovy() //groovy sdk
-    implementation 'com.android.tools.build:gradle:4.0.1'
-    //noinspection GradleDependency
-    implementation "org.ow2.asm:asm:6.0"
-    //noinspection GradleDependency
-    implementation "org.ow2.asm:asm-util:6.0"
-    //noinspection GradleDependency
-    implementation "org.ow2.asm:asm-commons:6.0"
-    implementation "org.ow2.asm:asm-analysis:6.0"
-    implementation "org.ow2.asm:asm-tree:6.0"
+    compileOnly 'com.android.tools.build:gradle:4.1.3'
+
 
 }
 
@@ -27,3 +21,17 @@ compileGroovy {
     dependsOn tasks.getByPath('compileKotlin')
     classpath += files(compileKotlin.destinationDir)
 }
+
+//上传到本地
+//apply plugin: 'maven'
+//uploadArchives{
+//    repositories.mavenDeployer{
+//        // 本地仓库路径
+//        repository(url: uri("${rootProject.projectDir}/localmaven"))
+//        pom.groupId = "com.github.niuxiaowei"
+//        // 项目名称
+//        pom.artifactId = "ReplaceMethod"
+//        // 版本号
+//        pom.version = "1.0.11"
+//    }
+//}

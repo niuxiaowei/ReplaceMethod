@@ -1,10 +1,11 @@
 package com.mi.replacemethod
 
 
-import jdk.internal.org.objectweb.asm.Opcodes
 import org.objectweb.asm.Label
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.commons.AdviceAdapter
+import org.objectweb.asm.Opcodes
+
 
 /**
  * Create by niuxiaowei on 2021/12/11
@@ -82,6 +83,7 @@ class ReplaceMethodVisitor(
      * @return Boolean  true:找到了，false：没找到
      */
     private fun findReplaceConstructMethod(replace: Replace, owner: String?, by: By, itf: Boolean, desc: String?): Boolean {
+        config.log("findReplaceConstructMethod newclassmethod:${replace.isNewClassMethod()}  owner:$owner  replace.classname:${replace.className}")
         if (replace.isNewClassMethod() && owner == replace.className) {
             //对方法增加 replace.className  和 extra参数object[]
             var newDesc: String? = null
@@ -336,6 +338,7 @@ class ReplaceMethodVisitor(
                     if (className == by.className) {
                         return false
                     }
+                    config.log("findReplaceMethod  simplereplacebymethod  className:${className}  methodName:${curMethodName}  owner:${owner}  replace.asmopcode:${replace.asmOpcode} opcode:${opcode} replace.methodname:${replace.methodName}  name:$name replace.desc:${replace.desc} desc:$desc  inpackagers:${replace.classInReplacePackages(className)}  release:${releaseEnable(replace)}")
                     //先判断opcode，name，desc，如果击中了则对owner再次进行判断（推迟判断owner的主要原因是，对于多态调用，owner与replace.className有可能会不一样，因此需要特殊处理）
                     if (replace.asmOpcode == opcode && name == replace.methodName && desc == replace.desc && replace.classInReplacePackages(className) && releaseEnable(replace)) {
                         return if (findReplaceConstructMethod(replace, owner, by, itf, desc) || findReplaceInstanceMethod(replace, owner, by, name, opcode, itf, desc)) {
