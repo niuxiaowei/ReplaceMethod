@@ -4,7 +4,7 @@ apply plugin: 'kotlin'
 //apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'kotlin-android-extensions'
 //若使用上传本地maven把下面的注释掉
-apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.niuxiaowei'
 
 

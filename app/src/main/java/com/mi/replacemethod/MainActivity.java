@@ -2,22 +2,17 @@ package com.mi.replacemethod;
 
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.content.Context;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
+
+import androidx.annotation.RequiresApi;
 
 public class MainActivity extends Activity {
 
@@ -44,6 +39,10 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
         testBaseType((byte) 1, new byte[]{}, (short) 1, null, 100L, null, true, null, 0.1f, null, 1, new int[]{}, 100.0D, null);
+        InnerClass innerClass = new InnerClass();
+        innerClass.f();
+        InnerStaticClass innerStaticClass = new InnerStaticClass();
+        innerStaticClass.f();
     }
 
     View inflate(int id, ViewGroup parentView) {
@@ -82,5 +81,34 @@ public class MainActivity extends Activity {
             var8.printStackTrace();
         }
         return "02:00:00:00:00:00";
+    }
+
+    private class InnerClass{
+        void f(){
+            NetworkInterface ni = null;
+            try {
+                byte[] macBytes = ni.getHardwareAddress();
+                Log.i("Main", "innerclass hello f method try");
+            } catch (SocketException e) {
+                e.printStackTrace();
+            }
+            Log.i("Main", "innerclass hello f method");
+        }
+
+    }
+
+    public static class InnerStaticClass{
+        void f(){
+            NetworkInterface ni = null;
+            try {
+                byte[] macBytes = ni.getHardwareAddress();
+                Log.i("Main", " static innerclass hello f method try");
+
+            } catch (SocketException e) {
+                e.printStackTrace();
+            }
+            Log.i("Main", " static innerclass hello f method try");
+        }
+
     }
 }
