@@ -1,13 +1,9 @@
 package com.mi.replacemethod
 
 
-import com.sun.org.apache.bcel.internal.generic.INVOKESPECIAL
-import com.sun.org.apache.bcel.internal.generic.INVOKESTATIC
-import com.sun.org.apache.bcel.internal.generic.INVOKEVIRTUAL
 import java.io.File
 import java.io.FileNotFoundException
 import java.util.HashSet
-import jdk.internal.org.objectweb.asm.Opcodes.*
 
 
 /**

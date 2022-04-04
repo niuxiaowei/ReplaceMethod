@@ -19,7 +19,6 @@ import java.util.jar.JarOutputStream
 import java.util.zip.ZipEntry
 
 import static org.objectweb.asm.ClassReader.EXPAND_FRAMES
-
 /**
  * custom transform: tranform classes before dex
  * inputType、scope、isIncremental主要根据 task:transformClassesWithDex来设定
@@ -28,6 +27,7 @@ class ReplaceMethodTransform extends Transform {
 
     private Project project
     private boolean isRelease
+    private static sAMSVersion = getAMSVersion()
 
     ReplaceMethodTransform(Project project, boolean isRelease) {
         this.project = project
@@ -63,7 +63,7 @@ class ReplaceMethodTransform extends Transform {
 
     Config initConfig() {
         def replaceMethodConfig = project.replaceMethod
-        Config config = new Config(replaceMethodConfig.open, replaceMethodConfig.openLog, isRelease,replaceMethodConfig.getLogFilters())
+        Config config = new Config(replaceMethodConfig.open, replaceMethodConfig.openLog, isRelease, replaceMethodConfig.getLogFilters())
         if (replaceMethodConfig.replaceByMethods != null && replaceMethodConfig.replaceByMethods.getAbsReplaceByMethods() != null) {
             config.methods = replaceMethodConfig.replaceByMethods.getAbsReplaceByMethods().methods
         }
@@ -91,6 +91,28 @@ class ReplaceMethodTransform extends Transform {
         return true
     }
 
+    private static int getAMSVersion() {
+        Class opClass = Opcodes.class
+        //从asm7 asm6 asm5找
+        try {
+            opClass.getDeclaredField("ASM7")
+            println '[ReplaceMethod]:   amsversion: asm7'
+            return Opcodes.ASM7
+        } catch (Exception e) {
+            println '[ReplaceMethod]:   get amsversion7 exception:'+e.getMessage()
+        }
+        try {
+            opClass.getDeclaredField("ASM6")
+            println '[ReplaceMethod]:   amsversion: asm6'
+            return Opcodes.ASM6
+        } catch (Exception e) {
+            println '[ReplaceMethod]:   get amsversion6 exception:'+e.getMessage()
+        }
+
+        println '[ReplaceMethod]:   amsversion: asm5'
+        return Opcodes.ASM5
+    }
+
 
     static void traceSrcFiles(DirectoryInput directoryInput, TransformOutputProvider outputProvider, Config config) {
 
@@ -103,7 +125,7 @@ class ReplaceMethodTransform extends Transform {
                 if (config.isNeedTraceClass(name)) {
                     ClassReader classReader = new ClassReader(file.bytes)
                     ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
-                    ClassVisitor cv = new ReplaceClassVisitor(Opcodes.ASM5, classWriter, config)
+                    ClassVisitor cv = new ReplaceClassVisitor(sAMSVersion, classWriter, config)
                     classReader.accept(cv, EXPAND_FRAMES)
                     byte[] code = classWriter.toByteArray()
                     FileOutputStream fos = new FileOutputStream(
@@ -154,7 +176,7 @@ class ReplaceMethodTransform extends Transform {
                     jarOutputStream.putNextEntry(zipEntry)
                     ClassReader classReader = new ClassReader(IOUtils.toByteArray(inputStream))
                     ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
-                    ClassVisitor cv = new ReplaceClassVisitor(Opcodes.ASM5, classWriter, config)
+                    ClassVisitor cv = new ReplaceClassVisitor(sAMSVersion, classWriter, config)
                     classReader.accept(cv, EXPAND_FRAMES)
                     byte[] code = classWriter.toByteArray()
                     jarOutputStream.write(code)

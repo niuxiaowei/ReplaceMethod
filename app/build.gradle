@@ -1,8 +1,8 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-android-extensions'
-}
+//plugins {
+apply plugin: 'com.android.application'
+apply  plugin: 'kotlin-android'
+apply  plugin: 'kotlin-android-extensions'
+//}
 
 apply plugin: 'ReplaceMethodPlugin'
 
@@ -57,7 +57,7 @@ dependencies {
 
 replaceMethod{
     open true
-    openLog true
+    openLog false
     logFilters "NetworkInterface"
     replaceByMethods{
         register {
