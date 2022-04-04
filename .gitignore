@@ -10,5 +10,6 @@
 .cxx
 local.properties
 *.iml
+/localmaven
 
 
