@@ -4,7 +4,7 @@ apply  plugin: 'kotlin-android'
 apply  plugin: 'kotlin-android-extensions'
 //}
 
-//apply plugin: 'ReplaceMethodPlugin'
+apply plugin: 'ReplaceMethodPlugin'
 
 
 android {
@@ -55,121 +55,146 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
 
-//replaceMethod{
-//    open true
-//    openLog false
-//    logFilters "NetworkInterface"
-//    replaceByMethods{
-//        register {
-//            replace {
-//                invokeType "ins"
-//                className "android.view.LayoutInflater"
-//                methodName "inflate"
-//                desc "(int,android.view.ViewGroup)android.view.View"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflate"
-//                addExtraParams = true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "ins"
-//                className "com.mi.replacemethod.MainActivity"
-//                methodName "inflate"
-//                desc "(int,android.view.ViewGroup)android.view.View"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflate"
-//                addExtraParams = true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "static"
-//                className "android.view.View"
-//                methodName "inflate"
-//                desc "(android.content.Context,int,android.view.ViewGroup)android.view.View"
-//                ignoreOverideStaticMethod true
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflate"
-//                addExtraParams  true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "static"
-//                className "com.mi.replacemethod.MyInflater"
-//                methodName "inflate"
-//                desc "(android.content.Context,int,android.view.ViewGroup)android.view.View"
-//                ignoreOverideStaticMethod true
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflateMyInflater"
-//                addExtraParams  true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "ins"
-//                className "android.view.LayoutInflater"
-//                methodName "inflate"
-//                desc "(int,android.view.ViewGroup,boolean)android.view.View"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "inflate"
-//                addExtraParams =  true
-//            }
-//        }
-//        register {
-//            replace {
-//                replacePackages "com.mi","com.niu"
-//                invokeType "ins"
-//                className "android.app.Activity"
-//                methodName "setContentView"
-//                desc "(int)"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "setContentView"
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "ins"
-//                className "android.view.View"
-//                methodName "setOnClickListener"
-//                desc "(android.view.View\$OnClickListener)"
-//                }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "setOnClickListener"
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "new"
-//                className "com.mi.replacemethod.MyTextView"
-//                desc "(android.content.Context)"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                methodName = "newMyTextView"
-//            }
-//        }
-//
+replaceMethod{
+    open true
+    openLog false
+    logFilters "NetworkInterface"
+    replaceByMethods{
+        register {
+            replace {
+                invokeType "ins"
+                className "android.view.LayoutInflater"
+                methodName "inflate"
+                desc "(int,android.view.ViewGroup)android.view.View"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflate"
+                addExtraParams = true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "ins"
+                className "com.mi.replacemethod.MainActivity"
+                methodName "inflate"
+                desc "(int,android.view.ViewGroup)android.view.View"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflate"
+                addExtraParams = true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "static"
+                className "android.view.View"
+                methodName "inflate"
+                desc "(android.content.Context,int,android.view.ViewGroup)android.view.View"
+                ignoreOverideStaticMethod true
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflate"
+                addExtraParams  true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "static"
+                className "com.mi.replacemethod.MyInflater"
+                methodName "inflate"
+                desc "(android.content.Context,int,android.view.ViewGroup)android.view.View"
+                ignoreOverideStaticMethod true
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflateMyInflater"
+                addExtraParams  true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "ins"
+                className "android.view.LayoutInflater"
+                methodName "inflate"
+                desc "(int,android.view.ViewGroup,boolean)android.view.View"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "inflate"
+                addExtraParams =  true
+            }
+        }
+        register {
+            replace {
+                replacePackages "com.mi","com.niu"
+                invokeType "ins"
+                className "android.app.Activity"
+                methodName "setContentView"
+                desc "(int)"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "setContentView"
+            }
+        }
+
+        register {
+            replace {
+                invokeType "ins"
+                className "android.view.View"
+                methodName "setOnClickListener"
+                desc "(android.view.View\$OnClickListener)"
+                }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "setOnClickListener"
+            }
+        }
+
+        register {
+            replace {
+                invokeType "new"
+                className "com.mi.replacemethod.MyTextView"
+                desc "(android.content.Context)"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                methodName = "newMyTextView"
+            }
+        }
+
+        register {
+            replace {
+                releaseEnable true
+                invokeType "static"
+                className "android.util.Log"
+                methodName "i"
+                desc "(java.lang.String,java.lang.String)int"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+            }
+        }
+
+        register {
+            replace {
+                invokeType "ins"
+                className "android.app.ActivityManager"
+                methodName "getRunningTasks"
+                desc "(int)java.util.List<android.app.ActivityManager\$RunningTaskInfo>"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+            }
+        }
+
 //        register {
 //            replace {
 //                releaseEnable true
@@ -194,71 +219,46 @@ dependencies {
 //                className = "com.mi.replacemethod.ReplaceMethodDemo"
 //            }
 //        }
-//
-////        register {
-////            replace {
-////                releaseEnable true
-////                invokeType "static"
-////                className "android.util.Log"
-////                methodName "i"
-////                desc "(java.lang.String,java.lang.String)int"
-////            }
-////            by {
-////                className = "com.mi.replacemethod.ReplaceMethodDemo"
-////            }
-////        }
-////
-////        register {
-////            replace {
-////                invokeType "ins"
-////                className "android.app.ActivityManager"
-////                methodName "getRunningTasks"
-////                desc "(int)java.util.List<android.app.ActivityManager\$RunningTaskInfo>"
-////            }
-////            by {
-////                className = "com.mi.replacemethod.ReplaceMethodDemo"
-////            }
-////        }
-//
-//        register {
-//            replace {
-//                releaseEnable true
-//                invokeType "ins"
-//                className "android.location.LocationManager"
-//                methodName "requestLocationUpdates"
-//                desc "(java.lang.String,long,float,android.location.LocationListener)"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                addExtraParams = true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                releaseEnable true
-//                invokeType "ins"
-//                className "java.net.NetworkInterface"
-//                methodName "getHardwareAddress"
-//                desc "()byte[]"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//                addExtraParams = true
-//            }
-//        }
-//
-//        register {
-//            replace {
-//                invokeType "static"
-//                className "com.mi.replacemethod.MainActivity"
-//                methodName "testBaseType"
-//                desc "(byte,byte[],short,short[],long,long[],boolean,boolean[],float,float[],int,int[],double,double[])"
-//            }
-//            by {
-//                className = "com.mi.replacemethod.ReplaceMethodDemo"
-//            }
-//        }
-//
-//    }
-//}
+
+        register {
+            replace {
+                releaseEnable true
+                invokeType "ins"
+                className "android.location.LocationManager"
+                methodName "requestLocationUpdates"
+                desc "(java.lang.String,long,float,android.location.LocationListener)"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                addExtraParams = true
+            }
+        }
+
+        register {
+            replace {
+                releaseEnable true
+                invokeType "ins"
+                className "java.net.NetworkInterface"
+                methodName "getHardwareAddress"
+                desc "()byte[]"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+                addExtraParams = true
+            }
+        }
+
+        register {
+            replace {
+                invokeType "static"
+                className "com.mi.replacemethod.MainActivity"
+                methodName "testBaseType"
+                desc "(byte,byte[],short,short[],long,long[],boolean,boolean[],float,float[],int,int[],double,double[])"
+            }
+            by {
+                className = "com.mi.replacemethod.ReplaceMethodDemo"
+            }
+        }
+
+    }
+}
