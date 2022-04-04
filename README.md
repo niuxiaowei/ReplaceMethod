@@ -140,7 +140,7 @@ buildscript {
        
     }
     dependencies {
-        classpath "com.github.niuxiaowei:ReplaceMethod:1.0.3"
+        classpath "com.github.niuxiaowei:ReplaceMethod:1.0.4"
     }
 }
 allprojects {
